@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rattplex Sports</title>
+<meta name="description" content="Pools and contests: Petz Pool, the NCAA tournament draft and Morlocked Pick'em.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏈</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #f2f3f5;
+    --card: #ffffff;
+    --line: #e1e3e8;
+    --ink: #1d1f24;
+    --ink-2: #555b66;
+    --live: #f5a524;
+    --live-ink: #8a5300;
+    --live-bg: #fdf1dc;
+    --off-bg: #eceef1;
+    --head: "Barlow Semi Condensed", "Roboto Condensed", "Arial Narrow", system-ui, sans-serif;
+    --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page: #15171b;
+      --card: #1f2228;
+      --line: #2f333b;
+      --ink: #eef0f3;
+      --ink-2: #a3a9b4;
+      --live-ink: #f5c26b;
+      --live-bg: #3a2c12;
+      --off-bg: #2a2e35;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font: 15px/1.45 var(--body);
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 16px 64px;
+  }
+  header { margin-bottom: 28px; }
+  h1 {
+    font: 800 clamp(2.25rem, 8vw, 3.5rem)/0.95 var(--head);
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+  }
+  header p { margin: 0; color: var(--ink-2); }
+
+  .sites {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .site a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 18px 16px;
+    color: inherit;
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .site a:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgb(0 0 0 / .08); }
+  .site a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+    font: 700 13px/1 var(--head);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .season {
+    padding: 4px 7px;
+    border-radius: 4px;
+    background: var(--off-bg);
+    white-space: nowrap;
+  }
+  .season.on { background: var(--live-bg); color: var(--live-ink); }
+  .season.on::before {
+    content: "";
+    display: inline-block;
+    width: 7px; height: 7px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: var(--live);
+    vertical-align: 1px;
+  }
+  h2 {
+    font: 800 1.75rem/1 var(--head);
+    text-transform: uppercase;
+    margin: 0 0 8px;
+  }
+  .site p { margin: 0 0 16px; color: var(--ink-2); flex: 1; }
+  .url {
+    font: 700 15px/1 var(--head);
+    letter-spacing: 0.02em;
+    color: var(--accent-ink, var(--accent));
+  }
+  .url::after { content: " →"; }
+
+  .splash  { --accent: #3a6fd8; }
+  .ncaa    { --accent: #c8202f; }
+  .morlock { --accent: #5b45c2; }
+  @media (prefers-color-scheme: dark) {
+    .splash  { --accent-ink: #7fa3ec; }
+    .ncaa    { --accent-ink: #ef6f79; }
+    .morlock { --accent-ink: #a594ea; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Rattplex Sports</h1>
+    <p>Our pools and contests, all in one place.</p>
+  </header>
+
+  <ul class="sites">
+    <li class="site splash">
+      <a href="https://splash.rattplex.com/">
+        <div class="meta"><span>College football</span><span class="season" data-months="8,9,10,11,0">Aug – Jan</span></div>
+        <h2>Petz Pool</h2>
+        <p>Our side bet inside the Splash Sports pick'em. Live picks against the spread and season standings for just the group.</p>
+        <span class="url">splash.rattplex.com</span>
+      </a>
+    </li>
+    <li class="site morlock">
+      <a href="https://morlocked.rattplex.com/">
+        <div class="meta"><span>NFL</span><span class="season" data-months="8,9,10,11,0">Sep – Jan</span></div>
+        <h2>Morlocked Pick'em</h2>
+        <p>The CBS pick'em pool, running since 2013. Half and overall standings, the live sweat, trends and all-time records.</p>
+        <span class="url">morlocked.rattplex.com</span>
+      </a>
+    </li>
+    <li class="site ncaa">
+      <a href="https://ncaa.rattplex.com/">
+        <div class="meta"><span>March Madness</span><span class="season" data-months="2,3">Mar – Apr</span></div>
+        <h2>TheeeeOPlex</h2>
+        <p>The NCAA tournament team draft. The Ledgesheet is dead. Draft board, live leaderboard, bracket and past winners.</p>
+        <span class="url">ncaa.rattplex.com</span>
+      </a>
+    </li>
+  </ul>
+</main>
+<script>
+  // Mark each site's badge "In season" when the current month is in its season.
+  const month = new Date().getMonth();
+  for (const el of document.querySelectorAll(".season")) {
+    if (el.dataset.months.split(",").map(Number).includes(month)) {
+      el.classList.add("on");
+      el.textContent = "In season";
+    }
+  }
+</script>
+</body>
+</html>
