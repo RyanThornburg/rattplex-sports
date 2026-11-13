@@ -6,7 +6,7 @@ A static landing page that links to the sports sites:
 - [Morlocked Pick'em](https://morlocked.rattplex.com/) ([cbs-pickem-web](https://github.com/RyanThornburg/cbs-pickem-web)): the CBS NFL pick'em pool dashboard
 - [TheeeeOPlex](https://ncaa.rattplex.com/) ([ncaa-tournament-draft](https://github.com/RyanThornburg/ncaa-tournament-draft)): the NCAA tournament team draft
 
-It's one HTML file, `public/index.html`, with no build step.
+It's one HTML file, `public/index.html`, with no build step. A small script flags each site that's in season (from its `data-months`) and moves those to the top of the list.
 
 ## Deploy
 

@@ -6,160 +6,121 @@
 <title>Rattplex Sports</title>
 <meta name="description" content="Pools and contests: Petz Pool, the NCAA tournament draft and Morlocked Pick'em.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏈</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --page: #f2f3f5;
-    --card: #ffffff;
-    --line: #e1e3e8;
-    --ink: #1d1f24;
-    --ink-2: #555b66;
-    --live: #f5a524;
-    --live-ink: #8a5300;
-    --live-bg: #fdf1dc;
-    --off-bg: #eceef1;
-    --head: "Barlow Semi Condensed", "Roboto Condensed", "Arial Narrow", system-ui, sans-serif;
-    --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    --page: #ffffff;
+    --box: #ffffff;
+    --box-hover: #f4f5f7;
+    --border: #c6cbd2;
+    --ink: #17191c;
+    --ink-2: #4f5560;
+    --ink-3: #6b717c;
+    --on: #1d7a3c;
+    color-scheme: light dark;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --page: #15171b;
-      --card: #1f2228;
-      --line: #2f333b;
-      --ink: #eef0f3;
-      --ink-2: #a3a9b4;
-      --live-ink: #f5c26b;
-      --live-bg: #3a2c12;
-      --off-bg: #2a2e35;
+      --page: #121212;
+      --box: #1a1a1a;
+      --box-hover: #222324;
+      --border: #3a3c40;
+      --ink: #eceef1;
+      --ink-2: #b4b9c1;
+      --ink-3: #959aa3;
+      --on: #63cf87;
     }
   }
 
   * { box-sizing: border-box; }
+  ::selection { background: var(--ink); color: var(--page); }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
     background: var(--page);
     color: var(--ink);
-    font: 15px/1.45 var(--body);
-    -webkit-font-smoothing: antialiased;
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   }
   main {
-    max-width: 960px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 48px 16px 64px;
+    padding: 40px 16px 64px;
   }
-  header { margin-bottom: 28px; }
   h1 {
-    font: 800 clamp(2.25rem, 8vw, 3.5rem)/0.95 var(--head);
-    letter-spacing: -0.005em;
-    text-transform: uppercase;
-    margin: 0 0 8px;
+    margin: 0 0 20px;
+    font-size: 1.75rem;
+    line-height: 1.2;
   }
-  header p { margin: 0; color: var(--ink-2); }
 
   .sites {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 14px;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
   }
   .site a {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-top: 5px solid var(--accent);
-    border-radius: 8px;
-    padding: 18px 18px 16px;
+    display: block;
+    padding: 16px;
+    background: var(--box);
+    border: 1px solid var(--border);
+    border-radius: 6px;
     color: inherit;
     text-decoration: none;
-    transition: transform .15s ease, box-shadow .15s ease;
+    -webkit-tap-highlight-color: transparent;
   }
-  .site a:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgb(0 0 0 / .08); }
-  .site a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .site a:hover, .site a:active { background: var(--box-hover); }
+  .site a:focus-visible { outline: 2px solid var(--name); outline-offset: 2px; }
 
-  .meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 10px;
-    font: 700 13px/1 var(--head);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-  }
-  .season {
-    padding: 4px 7px;
-    border-radius: 4px;
-    background: var(--off-bg);
-    white-space: nowrap;
-  }
-  .season.on { background: var(--live-bg); color: var(--live-ink); }
-  .season.on::before {
-    content: "";
-    display: inline-block;
-    width: 7px; height: 7px;
-    margin-right: 5px;
-    border-radius: 50%;
-    background: var(--live);
-    vertical-align: 1px;
-  }
   h2 {
-    font: 800 1.75rem/1 var(--head);
-    text-transform: uppercase;
-    margin: 0 0 8px;
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: var(--name);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
   }
-  .site p { margin: 0 0 16px; color: var(--ink-2); flex: 1; }
-  .url {
-    font: 700 15px/1 var(--head);
-    letter-spacing: 0.02em;
-    color: var(--accent-ink, var(--accent));
-  }
-  .url::after { content: " →"; }
+  .when { margin-top: 4px; font-size: 14px; color: var(--ink-3); }
+  .sport { color: var(--ink); font-weight: 600; }
+  .on { color: var(--on); font-weight: 600; white-space: nowrap; }
+  .site p { margin: 8px 0 0; color: var(--ink-2); font-size: 15px; }
+  .url { display: block; margin-top: 10px; font-size: 13px; color: var(--ink-3); }
 
-  .splash  { --accent: #3a6fd8; }
-  .ncaa    { --accent: #c8202f; }
-  .morlock { --accent: #5b45c2; }
+  .splash  { --name: #2c5fc7; }
+  .morlock { --name: #5b45c2; }
+  .ncaa    { --name: #b81c2b; }
   @media (prefers-color-scheme: dark) {
-    .splash  { --accent-ink: #7fa3ec; }
-    .ncaa    { --accent-ink: #ef6f79; }
-    .morlock { --accent-ink: #a594ea; }
+    .splash  { --name: #86a8ee; }
+    .morlock { --name: #ab9cf0; }
+    .ncaa    { --name: #f07a83; }
   }
 </style>
 </head>
 <body>
 <main>
-  <header>
-    <h1>Rattplex Sports</h1>
-    <p>Our pools and contests, all in one place.</p>
-  </header>
+  <h1>Rattplex Sports</h1>
 
-  <ul class="sites">
+  <ul class="sites" role="list">
     <li class="site splash">
-      <a href="https://splash.rattplex.com/">
-        <div class="meta"><span>College football</span><span class="season" data-months="8,9,10,11,0">Aug – Jan</span></div>
-        <h2>Petz Pool</h2>
+      <a href="https://splash.rattplex.com/" aria-labelledby="n1 w1">
+        <h2 id="n1">Petz Pool</h2>
+        <div class="when" id="w1" data-months="8,9,10,11,0"><span class="sport">College football</span><span aria-hidden="true"> · </span>Aug–Jan</div>
         <p>Our side bet inside the Splash Sports pick'em. Live picks against the spread and season standings for just the group.</p>
         <span class="url">splash.rattplex.com</span>
       </a>
     </li>
     <li class="site morlock">
-      <a href="https://morlocked.rattplex.com/">
-        <div class="meta"><span>NFL</span><span class="season" data-months="8,9,10,11,0">Sep – Jan</span></div>
-        <h2>Morlocked Pick'em</h2>
+      <a href="https://morlocked.rattplex.com/" aria-labelledby="n2 w2">
+        <h2 id="n2">Morlocked Pick'em</h2>
+        <div class="when" id="w2" data-months="8,9,10,11,0"><span class="sport">NFL</span><span aria-hidden="true"> · </span>Sep–Jan</div>
         <p>The CBS pick'em pool, running since 2013. Half and overall standings, the live sweat, trends and all-time records.</p>
         <span class="url">morlocked.rattplex.com</span>
       </a>
     </li>
     <li class="site ncaa">
-      <a href="https://ncaa.rattplex.com/">
-        <div class="meta"><span>March Madness</span><span class="season" data-months="2,3">Mar – Apr</span></div>
-        <h2>TheeeeOPlex</h2>
+      <a href="https://ncaa.rattplex.com/" aria-labelledby="n3 w3">
+        <h2 id="n3">TheeeeOPlex</h2>
+        <div class="when" id="w3" data-months="2,3"><span class="sport">March Madness</span><span aria-hidden="true"> · </span>Mar–Apr</div>
         <p>The NCAA tournament team draft. The Ledgesheet is dead. Draft board, live leaderboard, bracket and past winners.</p>
         <span class="url">ncaa.rattplex.com</span>
       </a>
@@ -167,14 +128,25 @@
   </ul>
 </main>
 <script>
-  // Mark each site's badge "In season" when the current month is in its season.
+  // Flag each site that's in season this month, then move the
+  // off-season ones to the bottom (keeping their relative order).
   const month = new Date().getMonth();
-  for (const el of document.querySelectorAll(".season")) {
+  const list = document.querySelector(".sites");
+  const offSeason = [];
+  for (const el of list.querySelectorAll(".when")) {
     if (el.dataset.months.split(",").map(Number).includes(month)) {
-      el.classList.add("on");
-      el.textContent = "In season";
+      const on = document.createElement("span");
+      on.className = "on";
+      on.textContent = "in season";
+      el.append(", ", on);
+    } else {
+      offSeason.push(el.closest(".site"));
     }
   }
+  list.append(...offSeason);
+
+  // Lets :active styles show on tap in iOS Safari.
+  document.addEventListener("touchstart", () => {}, { passive: true });
 </script>
 </body>
 </html>
